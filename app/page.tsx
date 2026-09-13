@@ -6,6 +6,7 @@ import Pagination from "@/components/Pagination";
 import { getProducts } from "@/services/api";
 
 export const dynamic = "force-dynamic";
+
 type Props = {
   searchParams: {
     page?: string;

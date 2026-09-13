@@ -5,9 +5,6 @@ import { headers } from "next/headers";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const userId = "6aa55e2a5e3e39b9db0ce4bc"
 
-// a API pode devolver os produtos de formatos meio diferentes
-// dependendo de como o backend monta a resposta, então essa
-// função tenta pegar o array de produtos de qualquer jeito que vier
 function normalizeProductsResponse(json: any, page: number, pageSize: number): ProductsResponse {
   let list: any[] = [];
 
