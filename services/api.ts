@@ -1,6 +1,5 @@
 import { ProductsResponse } from "@/services/type";
 import axios from "axios";
-import { headers } from "next/headers";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const userId = "6aa55e2a5e3e39b9db0ce4bc"
@@ -31,57 +30,48 @@ function normalizeProductsResponse(json: any, page: number, pageSize: number): P
 
 export async function getProducts(page: number, pageSize: number): Promise<ProductsResponse> {
 
-  try
-  {
     const res = await axios.get(`${API_URL}/api/products?user=${userId}&page=${page}&pageSize=${pageSize}`)
-    return normalizeProductsResponse(res.data, page, pageSize);
-  } catch (error) {
-    console.log(`Erro ao pegar produtos: ${error}`)
-    return { products: [], total: 0, page, pageSize };
-  }
-
+    if (res.status === 200) {
+      return normalizeProductsResponse(res.data, page, pageSize);
+    }
+    console.log(`Erro ao pegar produtos: ${res.status}`)
+    throw new Error(`Erro ao pegar produtos: ${res.status}`);
 }
 
-export async function getProductById(id: string) {
-
-  try
-  {
+export async function getProductById(id: string)
+{
     const res = await axios.get(`${API_URL}/api/products/by-id?id=${id}&user=${userId}`)
-    return res.data
-  } catch (error) {
-    console.log(`Erro ao pegar produtos por id: ${error}`)
-  }
+    if (res.status === 200)
+      return (res.data);
+    console.log(`Erro ao pegar produto: ${res.status}`)
+    throw new Error(`Erro ao pegar produto: ${res.status}`);
 }
 
-export async function createProduct(name: string, price: number, stock: number, description?: string) {
-
-  try
-  {
+export async function createProduct(name: string, price: number, stock: number, description?: string)
+{
     const res = await axios.post(`${API_URL}/api/products?user=${userId}`, {name, description, price, stock, user: userId}, { headers: { "Content-Type": "application/json" } })
-    return res.data
-  } catch (error)
-  {
-    console.log(`Erro ao criar produto: ${error}`)
-  }
+    if (res.status === 200)
+      return (res.data);
+    console.log(`Erro ao pegar produto: ${res.status}`)
+    throw new Error(`Erro ao pegar produto: ${res.status}`);
 }
 
-export async function updateProduct(id: string, name: string, description: string, price: number, stock: number) {
-  try
-  {
+export async function updateProduct(id: string, name: string, description: string, price: number, stock: number)
+{
     const res = await axios.patch(`${API_URL}/api/products?id=${id}&user=${userId}`, {name, description, price, stock}, { headers: { "Content-Type": "application/json" } })
-    return res.data
-  } catch (error) {
-    console.log(`Erro ao atualizar produto: ${error}`)
-  }
+    if (res.status === 200)
+      return (res.data);
+    console.log(`Erro ao pegar produto: ${res.status}`)
+    throw new Error(`Erro ao pegar produto: ${res.status}`);
+
 }
 
-export async function deleteProduct(id: string) {
-  try
-  {
+export async function deleteProduct(id: string)
+{
     const res = await axios.delete(`${API_URL}/api/products?id=${id}&user=${userId}`)
-    return true
-  } catch (error) {
-    console.log(`Erro ao excluir produto: ${error}`)
-    return false
-  }
+    if (res.status === 200)
+      return true;
+    console.log(`Erro ao pegar produto: ${res.status}`)
+    throw new Error(`Erro ao pegar produto: ${res.status}`);
+ 
 }

@@ -18,7 +18,7 @@ export default function ProductsTable({ products }: { products: Product[] }) {
 
   return (
     <div className="w-full">
-      <div className="flex items-center border-b border-gray-100 text-left text-sm text-gray-500 pb-3">
+      <div className="flex items-center justify-center bg-violet-50 border-b border-gray-100 text-left text-sm text-gray-500 py-4 px-4">
         <div className="w-10 pl-2">
           <input type="checkbox" className="rounded border-gray-300" />
         </div>
@@ -40,7 +40,7 @@ export default function ProductsTable({ products }: { products: Product[] }) {
       {products.map((product) => (
         <div
           key={product._id}
-          className="flex items-center border-b border-gray-50 text-sm py-4"
+          className="flex items-center border-b border-gray-200 text-sm py-4  px-4"
         >
           <div className="w-10 pl-2">
             <input type="checkbox" className="rounded border-gray-300" />

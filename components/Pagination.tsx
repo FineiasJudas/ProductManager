@@ -26,7 +26,7 @@ export default function Pagination({ currentPage, totalPages, totalItems }: Prop
   }
 
   return (
-    <div className="flex items-center justify-between pt-4">
+    <div className="flex items-center justify-between pt-4 px-4">
       <p className="text-sm text-gray-500">Total: {totalItems} itens</p>
 
       <div className="flex items-center gap-2">

@@ -6,7 +6,6 @@ export type FormState = {
   error: string;
 } | null;
 
-
 export async function createProductAction(prevState: FormState, formData: FormData): Promise<FormState> {
   const name = formData.get("name") as string;
   const description = formData.get("description") as string;
@@ -25,9 +24,12 @@ export async function createProductAction(prevState: FormState, formData: FormDa
     return { error: "Estoque inválido" };
   }
 
-  try {
+  try
+  {
     await api.createProduct( name, price, stock, description);
-  } catch (err: any) {
+  }
+  catch (err: any)
+  {
     console.log(err);
     return { error: "Não foi possível criar o produto, tenta de novo" };
   }
