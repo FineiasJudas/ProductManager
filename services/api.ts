@@ -34,7 +34,7 @@ export async function getProducts(page: number, pageSize: number): Promise<Produ
     if (res.status === 200) {
       return normalizeProductsResponse(res.data, page, pageSize);
     }
-    console.log(`Erro ao pegar produtos: ${res.status}`)
+    //console.log(`Erro ao pegar produtos: ${res.status}`)
     throw new Error(`Erro ao pegar produtos: ${res.status}`);
 }
 
@@ -43,17 +43,17 @@ export async function getProductById(id: string)
     const res = await axios.get(`${API_URL}/api/products/by-id?id=${id}&user=${userId}`)
     if (res.status === 200)
       return (res.data);
-    console.log(`Erro ao pegar produto: ${res.status}`)
+ //   console.log(`Erro ao pegar produto: ${res.status}`)
     throw new Error(`Erro ao pegar produto: ${res.status}`);
 }
 
-export async function createProduct(name: string, price: number, stock: number, description?: string)
-{
-    const res = await axios.post(`${API_URL}/api/products?user=${userId}`, {name, description, price, stock, user: userId}, { headers: { "Content-Type": "application/json" } })
-    if (res.status === 200)
-      return (res.data);
-    console.log(`Erro ao pegar produto: ${res.status}`)
-    throw new Error(`Erro ao pegar produto: ${res.status}`);
+export async function createProduct(name: string, price: number, stock: number, description?: string) {
+  const res = await axios.post(
+    `${API_URL}/api/products?user=${userId}`,
+    { name, description, price, stock, user: userId },
+    { headers: { "Content-Type": "application/json" } }
+  );
+  return res.data;
 }
 
 export async function updateProduct(id: string, name: string, description: string, price: number, stock: number)
@@ -61,7 +61,7 @@ export async function updateProduct(id: string, name: string, description: strin
     const res = await axios.patch(`${API_URL}/api/products?id=${id}&user=${userId}`, {name, description, price, stock}, { headers: { "Content-Type": "application/json" } })
     if (res.status === 200)
       return (res.data);
-    console.log(`Erro ao pegar produto: ${res.status}`)
+   // console.log(`Erro ao pegar produto: ${res.status}`)
     throw new Error(`Erro ao pegar produto: ${res.status}`);
 
 }
@@ -71,7 +71,7 @@ export async function deleteProduct(id: string)
     const res = await axios.delete(`${API_URL}/api/products?id=${id}&user=${userId}`)
     if (res.status === 200)
       return true;
-    console.log(`Erro ao pegar produto: ${res.status}`)
+    // console.log(`Erro ao pegar produto: ${res.status}`)
     throw new Error(`Erro ao pegar produto: ${res.status}`);
  
 }

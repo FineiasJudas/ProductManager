@@ -30,7 +30,7 @@ export async function createProductAction(prevState: FormState, formData: FormDa
   }
   catch (err: any)
   {
-    console.log(err);
+    //console.log(err);
     return { error: "Não foi possível criar o produto, tenta de novo" };
   }
 
@@ -56,7 +56,7 @@ export async function updateProductAction(prevState: FormState, formData: FormDa
   try {
     await api.updateProduct(id, name, description, price, stock );
   } catch (err) {
-    console.log(err);
+   // console.log(err);
     return { error: "Não foi possível salvar as alterações" };
   }
 

@@ -1,4 +1,4 @@
-import { ArrowUpDown } from "lucide-react";
+import { ArrowUpDown, ChevronDown } from "lucide-react";
 import ProductRowActions from "./ProductRowActions";
 import { Product } from "@/services/type";
 
@@ -23,18 +23,18 @@ export default function ProductsTable({ products }: { products: Product[] }) {
           <input type="checkbox" className="rounded border-gray-300" />
         </div>
         <div className="flex-1 flex items-center gap-1 font-medium">
-          Produto <ArrowUpDown size={12} />
+          Produto <ChevronDown  size={12} />
         </div>
         <div className="flex-1 flex items-center gap-1 font-medium">
-          Descrição <ArrowUpDown size={12} />
+          Descrição <ChevronDown size={12} />
         </div>
-        <div className="w-32 flex items-center gap-1 font-medium">
-          Preço (Kz) <ArrowUpDown size={12} />
+        <div className="w-42 flex items-center gap-1 font-medium">
+          Preço (Kz) <ChevronDown size={12} />
         </div>
-        <div className="w-24 flex items-center gap-1 font-medium">
-          Estoque <ArrowUpDown size={12} />
+        <div className="w-34 flex items-center gap-1 font-medium">
+          Estoque <ChevronDown size={12} />
         </div>
-        <div className="w-28 font-medium">Ações</div>
+        <div className="w-38 font-medium">Ações</div>
       </div>
 
       {products.map((product) => (
@@ -49,14 +49,14 @@ export default function ProductsTable({ products }: { products: Product[] }) {
           <div className="flex-1 pr-4 text-gray-500 truncate">
             {product.description || "-"}
           </div>
-          <div className="w-32 font-medium text-gray-900">
+          <div className="w-42 font-medium text-gray-900">
             Kz {product.price.toFixed(2)}
           </div>
-          <div className="w-24 flex items-center text-gray-700">
+          <div className="w-34 flex items-center text-gray-700">
             <StockDot stock={product.stock} />
             {product.stock}
           </div>
-          <div className="w-28">
+          <div className="w-38">
             <ProductRowActions product={product} />
           </div>
         </div>

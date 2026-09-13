@@ -14,7 +14,7 @@ export default async function ProdutosPage() {
     const result = await getProducts(1, 100);
     products = result.products;
   } catch (error) {
-    console.log(`Erro ao carregar produtos: ${error}`);
+    //console.log(`Erro ao carregar produtos: ${error}`);
   }
 
   return (
