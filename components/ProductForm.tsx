@@ -48,7 +48,7 @@ export default function ProductForm({ action, product, submitLabel, onSuccess }:
         <input
           name="name"
           defaultValue={product?.name}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-primary"
+          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none "
           placeholder="Ex: Notebook UltraBook Pro 14"
         />
       </div>
@@ -59,7 +59,7 @@ export default function ProductForm({ action, product, submitLabel, onSuccess }:
           name="description"
           defaultValue={product?.description}
           rows={3}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-primary"
+          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none "
           placeholder="Descrição do produto..."
         />
       </div>
@@ -72,7 +72,7 @@ export default function ProductForm({ action, product, submitLabel, onSuccess }:
             type="number"
             step="0.01"
             defaultValue={product?.price}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-primary"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none "
             placeholder="0.00"
           />
         </div>
@@ -82,7 +82,7 @@ export default function ProductForm({ action, product, submitLabel, onSuccess }:
             name="stock"
             type="number"
             defaultValue={product?.stock}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-primary"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none "
             placeholder="0"
           />
         </div>

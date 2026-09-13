@@ -1,4 +1,4 @@
-import { Box, Package } from "lucide-react";
+import { Box } from "lucide-react";
 import NewProductButton from "./NewProductButton";
 
 export default function Header() {
