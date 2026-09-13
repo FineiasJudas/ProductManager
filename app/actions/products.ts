@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import * as api from "@/services/api";
-
 export type FormState = {
   error: string;
 } | null;

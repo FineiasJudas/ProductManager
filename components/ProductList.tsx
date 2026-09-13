@@ -17,58 +17,50 @@ export default function ProductsTable({ products }: { products: Product[] }) {
   }
 
   return (
-    <table className="w-full">
-      <thead>
-        <tr className="border-b border-gray-100 text-left text-sm text-gray-500">
-          <th className="w-10 py-3 pl-2">
+    <div className="w-full">
+      <div className="flex items-center border-b border-gray-100 text-left text-sm text-gray-500 pb-3">
+        <div className="w-10 pl-2">
+          <input type="checkbox" className="rounded border-gray-300" />
+        </div>
+        <div className="flex-1 flex items-center gap-1 font-medium">
+          Produto <ArrowUpDown size={12} />
+        </div>
+        <div className="flex-1 flex items-center gap-1 font-medium">
+          Descrição <ArrowUpDown size={12} />
+        </div>
+        <div className="w-32 flex items-center gap-1 font-medium">
+          Preço (Kz) <ArrowUpDown size={12} />
+        </div>
+        <div className="w-24 flex items-center gap-1 font-medium">
+          Estoque <ArrowUpDown size={12} />
+        </div>
+        <div className="w-28 font-medium">Ações</div>
+      </div>
+
+      {products.map((product) => (
+        <div
+          key={product._id}
+          className="flex items-center border-b border-gray-50 text-sm py-4"
+        >
+          <div className="w-10 pl-2">
             <input type="checkbox" className="rounded border-gray-300" />
-          </th>
-          <th className="py-3 font-medium">
-            <div className="flex items-center gap-1">
-              Produto <ArrowUpDown size={12} />
-            </div>
-          </th>
-          <th className="py-3 font-medium">
-            <div className="flex items-center gap-1">
-              Descrição <ArrowUpDown size={12} />
-            </div>
-          </th>
-          <th className="py-3 font-medium">
-            <div className="flex items-center gap-1">
-              Preço (Kz) <ArrowUpDown size={12} />
-            </div>
-          </th>
-          <th className="py-3 font-medium">
-            <div className="flex items-center gap-1">
-              Estoque <ArrowUpDown size={12} />
-            </div>
-          </th>
-          <th className="py-3 font-medium">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products.map((product) => (
-          <tr key={product._id} className="border-b border-gray-50 text-sm">
-            <td className="py-4 pl-2">
-              <input type="checkbox" className="rounded border-gray-300" />
-            </td>
-            <td className="py-4 pr-4 font-medium text-gray-900">{product.name}</td>
-            <td className="max-w-xs truncate py-4 pr-4 text-gray-500">
-              {product.description || "-"}
-            </td>
-            <td className="py-4 pr-4 font-medium text-gray-900">
-              Kz {product.price.toFixed(2)}
-            </td>
-            <td className="py-4 pr-4 text-gray-700">
-              <StockDot stock={product.stock} />
-              {product.stock}
-            </td>
-            <td className="py-4">
-              <ProductRowActions product={product} />
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          </div>
+          <div className="flex-1 pr-4 font-medium text-gray-900">{product.name}</div>
+          <div className="flex-1 pr-4 text-gray-500 truncate">
+            {product.description || "-"}
+          </div>
+          <div className="w-32 font-medium text-gray-900">
+            Kz {product.price.toFixed(2)}
+          </div>
+          <div className="w-24 flex items-center text-gray-700">
+            <StockDot stock={product.stock} />
+            {product.stock}
+          </div>
+          <div className="w-28">
+            <ProductRowActions product={product} />
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

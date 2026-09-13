@@ -29,13 +29,6 @@ type Props = {
 export default function ProductForm({ action, product, submitLabel, onSuccess }: Props) {
   const [state, formAction] = useActionState(action, null);
 
-  if (state === null && typeof window !== "undefined") {
-  }
-
-  async function handleAction(formData: FormData) {
-    const result = await formAction(formData);
-  }
-
   return (
     <form
       action={async (formData: FormData) => {
