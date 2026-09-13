@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ProductoManager
 
-## Getting Started
+Teste técnico: tela de gerenciamento de produtos (listar, criar, editar, remover), consumindo a API fornecida.
 
-First, run the development server:
+## Stack
+
+- Next.js (App Router)
+- React Server Components + Server Actions
+- Tailwind CSS
+- Axios
+
+## Como rodar
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre em `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variáveis de ambiente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Cria um `.env` na raiz:
 
-## Learn More
+```
+NEXT_PUBLIC_API_URL="https://backend-nodejs-q65c.onrender.com"
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Estrutura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/
+  page.tsx            -> tela principal, busca os produtos na API
+  actions/products.ts -> Server Actions (criar, editar, remover)
+components/
+  Header.tsx           -> título + botão "Novo Produto"
+  NewProductButton.tsx  -> abre o modal de criação
+  SerachAndFIlters.tsx  -> busca, filtro de estoque e itens por página
+  ProductList.tsx       -> lista de produtos
+  ProductRowActions.tsx -> ver / editar / remover por item
+  ProductForm.tsx        -> formulário usado no criar e no editar
+  Modal.tsx               -> modal genérico
+  Pagination.tsx          -> paginação
+services/
+  api.ts     -> chamadas pra API (getProducts, createProduct, updateProduct, deleteProduct)
+  type.ts    -> tipos
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Observações
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- A API não tem busca/filtro por nome, então isso é feito em cima dos produtos que já vieram da página atual.
+- O `USER_ID` do desafio está fixo em `services/api.ts`.
+```
